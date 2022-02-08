@@ -30,23 +30,18 @@ async def on_message(message):
         return
 
     if  '!random fact' in message.content.lower() or '!randomfact' in message.content.lower()  or '!randfact' in message.content.lower() or '!rf' in message.content.lower():   
-        #start timer
+        #Time the operation
         start_time = time.time()
         response = requests.get('https://en.wikipedia.org/api/rest_v1/page/random/summary').json()
         response_time = time.time()
         summary = response['extract']
         summary_time = time.time() 
-       
-        # print(start_time)
-        # print(response_time)
-        # print(summary_time)
-        #print(f'Sending message about {title}')
+
         await message.channel.send(summary)        
-        if 'stats' in message.content.lower():
+        if 'stats' in message.content.lower():#Include stats if in message
             await message.channel.send(f'It took a total of {int((summary_time-start_time)*1000)}ms to process this entire message. \n{int((response_time - start_time) * 1000)}ms for the API call \n{int((summary_time - response_time)*1000)}ms to extract')
 
     if 'you just advanced to level' in message.content.lower() and message.author.name == 'MEE6':
-        #print('New level up!')
         await message.channel.send(file=discord.File('celebrate-happy.gif'))
 
 

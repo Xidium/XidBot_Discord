@@ -93,9 +93,8 @@ async def GetChannelNiceHighScores(message):
 
     Limit 10        
     '''
-    
-    scores = cur.execute(sql_query).fetchall()
-    
+
+    scores = cur.execute(sql_query).fetchall()    
 
     response_string = f'```Nice Leaderboard for channel {message.channel.name}\n'
     formatted_table = FormatTable(('Score','UserName'),scores)
@@ -191,10 +190,12 @@ async def GetServerNiceHighScores(message):
 
 
 def FormatTable(headers, scores):
+    #I built this because when I tried out of the box libraries I had formatting issues.  After I wrote this I realized Discord is not monospace.
+    #Adding ``` at the front and back of the message signifies a "block" message which is monospace
 
     col_width = 20
 
-    #build the header string    
+    #Build the header string    
     header_string = ''
     for header in headers:
         #Conctact the new header onto the string
@@ -208,14 +209,14 @@ def FormatTable(headers, scores):
     header_string = header_string + '\n'
 
 
-    #build score string
+    #Build score string
     score_string = ''
 
     for score in scores:
         x = 0
         while x < len(headers):
             score_string = score_string + str(score[x])
-            #add whitespace
+            #Add whitespace
             i=0
             while i < col_width - len(str(score[x])):
                 score_string = score_string + ' '

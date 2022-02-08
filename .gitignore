@@ -2,4 +2,4 @@ env/
 credentials/
 
 *.gif
-*.db
+nice.db
