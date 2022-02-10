@@ -159,7 +159,7 @@ async def GetTopNiceHighcores(message):
     From Nice
 
     Group By UserName
-    Order By NiceScore Desc
+    Order By Sum(NiceScore) Desc
     Limit 10
     '''
        
@@ -180,7 +180,7 @@ async def GetServerNiceHighScores(message):
     GuildID = '{message.guild.id}'
     
     Group By UserName
-    Order By NiceScore Desc
+    Order By Sum(NiceScore) Desc
     Limit 10
     '''
 
