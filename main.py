@@ -10,7 +10,7 @@ import tagged
 
 ###Load token
 try:
-    with open('.\\credentials\creds.yaml') as file:
+    with open('./credentials/creds.yaml') as file:
         creds = yaml.safe_load(file)
 except Exception as e:
     print(e)
