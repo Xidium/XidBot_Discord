@@ -1,9 +1,11 @@
+from re import L
 import discord
 import requests
 import nice
 from discord.ext import commands
 import yaml
 import time
+import tagged
 
 
 ###Load token
@@ -60,6 +62,11 @@ async def on_message(message):
     
     if '!servernicescore' in message.content.lower():
         await nice.GetServerNiceHighScores(message)
+
+
+    if client.user.mentioned_in(message):
+        await tagged.MemeResponse(message)
+
 
 
 client.run(token)
