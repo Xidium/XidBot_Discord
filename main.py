@@ -64,7 +64,7 @@ async def on_message(message):
         await nice.GetServerNiceHighScores(message)
 
 
-    if client.user.mentioned_in(message):
+    if client.user.mentioned_in(message) and 'everyone' not in message.content.lower():
         await tagged.MemeResponse(message)
 
 

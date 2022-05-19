@@ -1,5 +1,4 @@
 env/
 credentials/
 __pycache__/
-*.gif
 nice.db
